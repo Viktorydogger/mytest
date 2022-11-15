@@ -5,16 +5,17 @@ import (
 )
 type Item struct {
     ID int `json:"id"`
-    Name string `json:"name"`
-    Description string `json:"description"`
-    CreatedAt string `json:"created_at"`
+    customer int `json:"customer"`
+    services int `json: "services"`   
+    orders int `json: "orders"`
+    balance float32  `json: "balance"`
 }
 type ItemList struct {
     Items []Item `json:"items"`
 }
 func (i *Item) Bind(r *http.Request) error {
-    if i.Name == "" {
-        return fmt.Errorf("name is a required field")
+    if i.customer == "" {
+        return fmt.Errorf("customer is a required field")
     }
     return nil
 }
